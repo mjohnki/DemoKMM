@@ -14,6 +14,7 @@ sqldelight {
     database("Database") {
         packageName = "de.johnki.shared"
     }
+    linkSqlite = true
 }
 
 kotlin {
@@ -25,7 +26,20 @@ kotlin {
         else
             ::iosX64
 
-    iosTarget("ios") {}
+
+
+    iosTarget("ios") {
+        binaries {
+            framework("demo") {
+                baseName = "demo"
+                linkerOpts.add("-lsqlite3")
+            }
+        }
+    }
+
+    targets.getByName<KotlinNativeTarget>("ios").compilations.forEach {
+        it.kotlinOptions.freeCompilerArgs += arrayOf("-linker-options", "-lsqlite3")
+    }
 
     cocoapods {
         summary = "Some description for the Shared Module"
@@ -61,10 +75,6 @@ kotlin {
 
                 //ktor
                 implementation("io.ktor:ktor-client-android:1.5.4")
-
-                //coroutines
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3-native-mt")
-
             }
         }
 
@@ -92,8 +102,34 @@ kotlin {
         }
 
         val iosTest by getting
+
+        configurations.matching { it.name != "kotlinCompilerPluginClasspath" }.all {
+            resolutionStrategy.eachDependency {
+                val version = requested.version
+                if (requested.group == "org.jetbrains.kotlinx" &&
+                    requested.name.startsWith("kotlinx-coroutines") &&
+                    version != null && !version.contains("native-mt")
+                ) {
+                    useVersion("$version-native-mt")
+                }
+            }
+        }
     }
 }
+
+val packForXcode by tasks.creating(Sync::class) {
+    val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
+    val framework = kotlin.targets.getByName<KotlinNativeTarget>("ios").binaries.getFramework(mode)
+    val targetDir = File(buildDir, "xcode-frameworks")
+
+    group = "build"
+    dependsOn(framework.linkTask)
+    inputs.property("mode", mode)
+
+    from({ framework.outputDirectory })
+    into(targetDir)
+}
+tasks.getByName("build").dependsOn(packForXcode)
 
 android {
     compileSdkVersion(30)
