@@ -75,6 +75,9 @@ kotlin {
 
                 //ktor
                 implementation("io.ktor:ktor-client-android:1.5.4")
+
+                //coroutines
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.3-native-mt")
             }
         }
 
@@ -103,7 +106,7 @@ kotlin {
 
         val iosTest by getting
 
-        configurations.matching { it.name != "kotlinCompilerPluginClasspath" }.all {
+       /* configurations.matching { it.name != "kotlinCompilerPluginClasspath" }.all {
             resolutionStrategy.eachDependency {
                 val version = requested.version
                 if (requested.group == "org.jetbrains.kotlinx" &&
@@ -113,7 +116,7 @@ kotlin {
                     useVersion("$version-native-mt")
                 }
             }
-        }
+        }*/
     }
 }
 

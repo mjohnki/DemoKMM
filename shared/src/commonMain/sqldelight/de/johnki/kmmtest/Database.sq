@@ -1,15 +1,15 @@
-CREATE TABLE todo(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
-    completed INTEGER
+CREATE TABLE iss(
+    id INTEGER PRIMARY KEY NOT NULL,
+    latitude REAL NOT NULL,
+    longitude REAL NOT NULL,
+    altitude REAL NOT NULL,
+    velocity REAL NOT NULL,
+    visibility TEXT NOT NULL,
+    timestamp INTEGER NOT NULL
 );
 
-
-selectAll:
-SELECT * FROM todo;
+select:
+SELECT * FROM iss;
 
 insert:
-INSERT INTO todo(title, completed) VALUES (?, ?);
-
-deleteAll:
-DELETE FROM todo;
+INSERT OR REPLACE INTO iss(id, latitude, longitude, altitude, velocity, visibility, timestamp) VALUES (?, ?, ?, ?, ?, ?, ?);
