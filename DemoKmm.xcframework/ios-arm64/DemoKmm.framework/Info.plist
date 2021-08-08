@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleExecutable</key>
-    <string>shared</string>
+    <string>DemoKmm</string>
     <key>CFBundleIdentifier</key>
-    <string>de.johnki.app.demokmm.shared</string>
+    <string>de.johnki.app.demokmm.DemoKmm</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>shared</string>
+    <string>DemoKmm</string>
     <key>CFBundlePackageType</key>
     <string>FMWK</string>
     <key>CFBundleShortVersionString</key>

@@ -6,7 +6,7 @@ plugins {
     id("com.chromaticnoise.multiplatform-swiftpackage") version "2.0.3"
 }
 
-version = "1.0"
+version = "1.0.1"
 
 kotlin {
     android()
@@ -14,7 +14,7 @@ kotlin {
     ios {
         binaries {
             framework {
-                baseName = "shared"
+                baseName = "DemoKmm"
             }
         }
     }
@@ -23,7 +23,8 @@ kotlin {
         packageName("DemoKmm")
         swiftToolsVersion("5.3")
         targetPlatforms {
-            iOS { v("11") }
+            iOS { v("13") }
+            macOS { v("10_15") }
         }
         outputDirectory(File(rootDir, "/"))
     }

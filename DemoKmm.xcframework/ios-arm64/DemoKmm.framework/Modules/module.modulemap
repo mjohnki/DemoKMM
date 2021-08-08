@@ -1,0 +1,6 @@
+framework module DemoKmm {
+    umbrella header "DemoKmm.h"
+
+    export *
+    module * { export * }
+}

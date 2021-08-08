@@ -13,29 +13,29 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma clang diagnostic ignored "-Wnullability"
 
 __attribute__((swift_name("KotlinBase")))
-@interface SharedBase : NSObject
+@interface DemoKmmBase : NSObject
 - (instancetype)init __attribute__((unavailable));
 + (instancetype)new __attribute__((unavailable));
 + (void)initialize __attribute__((objc_requires_super));
 @end;
 
-@interface SharedBase (SharedBaseCopying) <NSCopying>
+@interface DemoKmmBase (DemoKmmBaseCopying) <NSCopying>
 @end;
 
 __attribute__((swift_name("KotlinMutableSet")))
-@interface SharedMutableSet<ObjectType> : NSMutableSet<ObjectType>
+@interface DemoKmmMutableSet<ObjectType> : NSMutableSet<ObjectType>
 @end;
 
 __attribute__((swift_name("KotlinMutableDictionary")))
-@interface SharedMutableDictionary<KeyType, ObjectType> : NSMutableDictionary<KeyType, ObjectType>
+@interface DemoKmmMutableDictionary<KeyType, ObjectType> : NSMutableDictionary<KeyType, ObjectType>
 @end;
 
-@interface NSError (NSErrorSharedKotlinException)
+@interface NSError (NSErrorDemoKmmKotlinException)
 @property (readonly) id _Nullable kotlinException;
 @end;
 
 __attribute__((swift_name("KotlinNumber")))
-@interface SharedNumber : NSNumber
+@interface DemoKmmNumber : NSNumber
 - (instancetype)initWithChar:(char)value __attribute__((unavailable));
 - (instancetype)initWithUnsignedChar:(unsigned char)value __attribute__((unavailable));
 - (instancetype)initWithShort:(short)value __attribute__((unavailable));
@@ -69,74 +69,74 @@ __attribute__((swift_name("KotlinNumber")))
 @end;
 
 __attribute__((swift_name("KotlinByte")))
-@interface SharedByte : SharedNumber
+@interface DemoKmmByte : DemoKmmNumber
 - (instancetype)initWithChar:(char)value;
 + (instancetype)numberWithChar:(char)value;
 @end;
 
 __attribute__((swift_name("KotlinUByte")))
-@interface SharedUByte : SharedNumber
+@interface DemoKmmUByte : DemoKmmNumber
 - (instancetype)initWithUnsignedChar:(unsigned char)value;
 + (instancetype)numberWithUnsignedChar:(unsigned char)value;
 @end;
 
 __attribute__((swift_name("KotlinShort")))
-@interface SharedShort : SharedNumber
+@interface DemoKmmShort : DemoKmmNumber
 - (instancetype)initWithShort:(short)value;
 + (instancetype)numberWithShort:(short)value;
 @end;
 
 __attribute__((swift_name("KotlinUShort")))
-@interface SharedUShort : SharedNumber
+@interface DemoKmmUShort : DemoKmmNumber
 - (instancetype)initWithUnsignedShort:(unsigned short)value;
 + (instancetype)numberWithUnsignedShort:(unsigned short)value;
 @end;
 
 __attribute__((swift_name("KotlinInt")))
-@interface SharedInt : SharedNumber
+@interface DemoKmmInt : DemoKmmNumber
 - (instancetype)initWithInt:(int)value;
 + (instancetype)numberWithInt:(int)value;
 @end;
 
 __attribute__((swift_name("KotlinUInt")))
-@interface SharedUInt : SharedNumber
+@interface DemoKmmUInt : DemoKmmNumber
 - (instancetype)initWithUnsignedInt:(unsigned int)value;
 + (instancetype)numberWithUnsignedInt:(unsigned int)value;
 @end;
 
 __attribute__((swift_name("KotlinLong")))
-@interface SharedLong : SharedNumber
+@interface DemoKmmLong : DemoKmmNumber
 - (instancetype)initWithLongLong:(long long)value;
 + (instancetype)numberWithLongLong:(long long)value;
 @end;
 
 __attribute__((swift_name("KotlinULong")))
-@interface SharedULong : SharedNumber
+@interface DemoKmmULong : DemoKmmNumber
 - (instancetype)initWithUnsignedLongLong:(unsigned long long)value;
 + (instancetype)numberWithUnsignedLongLong:(unsigned long long)value;
 @end;
 
 __attribute__((swift_name("KotlinFloat")))
-@interface SharedFloat : SharedNumber
+@interface DemoKmmFloat : DemoKmmNumber
 - (instancetype)initWithFloat:(float)value;
 + (instancetype)numberWithFloat:(float)value;
 @end;
 
 __attribute__((swift_name("KotlinDouble")))
-@interface SharedDouble : SharedNumber
+@interface DemoKmmDouble : DemoKmmNumber
 - (instancetype)initWithDouble:(double)value;
 + (instancetype)numberWithDouble:(double)value;
 @end;
 
 __attribute__((swift_name("KotlinBoolean")))
-@interface SharedBoolean : SharedNumber
+@interface DemoKmmBoolean : DemoKmmNumber
 - (instancetype)initWithBool:(BOOL)value;
 + (instancetype)numberWithBool:(BOOL)value;
 @end;
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Greeting")))
-@interface SharedGreeting : SharedBase
+@interface DemoKmmGreeting : DemoKmmBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 - (NSString *)greeting __attribute__((swift_name("greeting()")));
@@ -144,7 +144,7 @@ __attribute__((swift_name("Greeting")))
 
 __attribute__((objc_subclassing_restricted))
 __attribute__((swift_name("Platform")))
-@interface SharedPlatform : SharedBase
+@interface DemoKmmPlatform : DemoKmmBase
 - (instancetype)init __attribute__((swift_name("init()"))) __attribute__((objc_designated_initializer));
 + (instancetype)new __attribute__((availability(swift, unavailable, message="use object initializers instead")));
 @property (readonly) NSString *platform __attribute__((swift_name("platform")));
