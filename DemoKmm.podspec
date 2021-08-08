@@ -2,7 +2,7 @@ Pod::Spec.new do |spec|
   spec.name = 'DemoKmm'
   spec.version = '1.0.0'
   spec.homepage = 'https://www.cocoapods.org'
-  spec.source = { :git => "git@github.com:ptsiogas/KotlinMultiplatformSwiftPackageExample.git", :tag => "#{spec.version}" }
+  spec.source = { :git => "git@github.com:mjohnki/DemoKMM.git", :tag => "#{spec.version}" }
   spec.authors = 'Martin Johnki'
   spec.license = { :type => "MIT", :file => "LICENSE" }
   spec.summary = 'KMM shared code pod'
