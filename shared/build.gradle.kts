@@ -17,7 +17,13 @@ kotlin {
         else -> ::iosX64
     }
 
-    iosTarget("ios") {}
+    iosTarget("ios") {
+        binaries {
+            framework {
+                baseName = "shared"
+            }
+        }
+    }
 
     multiplatformSwiftPackage {
         packageName("DemoKmm")
